@@ -75,7 +75,8 @@ void BFS(vector<int> v[])
 	}
 	cout<<endl;
 }
-//For More Visite Geeksforgeeks
+
+
 bool cycleuntil(int vt,vector<int> v[],int parent,bool visited[])
 {
 	visited[vt]=true;
@@ -105,7 +106,7 @@ bool iscycle(vector<int> v[])
 	return false;
 }
 
-//TO get Shortest Path
+//TO get Shortest Path B/W Two vertices
 void shortest_path(vector<int> v[],int start,int destination,int n)
 {
 	queue<int> q;
