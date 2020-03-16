@@ -8,11 +8,13 @@
 */
 
 
+
 #include<iostream>
 #include<stack>
 #include<vector>
 #define F -12345
 #define INT_MAX1 123456
+#define INT_MAX 4758696
 using namespace std;
 
 struct node
@@ -78,6 +80,9 @@ int Graph:: IsPathExist(int u,int v)
 
 void Graph :: Floyed_Warshall()
 {
+    int parent[v+1];
+    for(int i=0;i<v;i++)
+        parent[v] = -1;
 	int PathMatrix[v][v];
 	for(int i=0;i<v;i++)
 	{
@@ -102,10 +107,14 @@ void Graph :: Floyed_Warshall()
 		{
 			for(int j=0;j<v;j++)
 			{
-				//if(i!=j){
-				if(PathMatrix[i][j] > (PathMatrix[i][k]+PathMatrix[k][j]))
+				if(PathMatrix[i][j] > (PathMatrix[i][k]+PathMatrix[k][j])){
+					
 					PathMatrix[i][j] = PathMatrix[i][k]+PathMatrix[k][j] ;
-				//}
+					parent[k] = i;
+					parent[j] = k;
+					
+				}
+			
 				
 			}
 		}
@@ -138,6 +147,15 @@ void Graph :: Floyed_Warshall()
 		cout<<endl;
 
 	}
+	cout<<"Graph Path : "<<endl;
+    for(int i=0;i<v;i++)
+    {
+        cout<<parent[i]<<" ";
+    }
+    cout<<endl;
+    for(int i=0;i<v;i++)
+    cout<<i<<" ";
+    cout<<endl;
 }
 
 
