@@ -64,13 +64,13 @@ void Union(node* n1,node* n2,std::map<int, node*> &m)
 	if(m[p1]->rank>=m[p2]->rank)
 	{
 		m[p1]->rank = (m[p1]->rank==m[p2]->rank)?m[p1]->rank+1:m[p1]->rank;
-		//m[p1]->rank = m[p1]->rank+m[p2]->rank;
+
 		m[p2]->parent = m[p1];
 	}
 	else
 	{
+	    m[p2]->rank = (m[p2]->rank==m[p1]->rank)?m[p2]->rank+1:m[p2]->rank;
 		m[p1]->parent = m[p2];
-		//m[p2]->rank = m[p1]->rank+m[p2]->rank;	
 	}
 
 }
@@ -110,6 +110,7 @@ void Prims_Algorithm(Edge E[],int n,int v)
 
 		if(p1!=p2)
 		{
+		    Union(m[p1],m[p2],m);
 			Result[edge_count] = E[i];
 			edge_count++;
 		}
@@ -160,4 +161,3 @@ int main()
 	Prims_Algorithm(E,e,n);
 
 }
-
